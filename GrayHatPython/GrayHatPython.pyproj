@@ -4,13 +4,15 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>0dfdf922-7d3a-4c88-be50-89b1a2edc2d8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>GrayHatPython.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>GrayHatPython</Name>
     <RootNamespace>GrayHatPython</RootNamespace>
+    <InterpreterId>MSBuild|gray-hat-python|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +23,35 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GrayHatPython.py" />
+    <Compile Include="debugger\calc_test.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="debugger\my_debugger.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="debugger\my_debugger_defines.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="printf.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="unions.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="gray-hat-python\">
+      <Id>gray-hat-python</Id>
+      <Version>3.6</Version>
+      <Description>gray-hat-python (Python 3.6 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="debugger\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
